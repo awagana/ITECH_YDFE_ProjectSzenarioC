@@ -46,15 +46,3 @@ git pull origin main
 3. Test your changes thoroughly
 
 4. Create a Pull Request with a clear description
-
-## Keeping Repository Clean
-
-- Delete merged branches
-- Avoid committing sensitive data or large files
-- Use `.gitignore` for dependencies and build artifacts
-
-## Code Review
-
-- Request review from team members
-- Address feedback promptly
-- Merge only after approval
