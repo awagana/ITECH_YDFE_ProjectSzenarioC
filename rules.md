@@ -4,7 +4,7 @@
 ## Before Starting Work
 
 Always pull the latest changes:
-```bash
+```bash-
 git pull origin main
 ```
 
