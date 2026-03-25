@@ -17,6 +17,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # ---------- Python Setup ----------
       - name: Set up Python
         if: matrix.language == 'python'
         uses: actions/setup-python@v4
@@ -33,16 +34,18 @@ jobs:
         if: matrix.language == 'python'
         run: flake8 .
 
+      # ---------- JavaScript Setup ----------
       - name: Set up Node.js
         if: matrix.language == 'javascript'
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      - name: Install JS dependencies
+      - name: Install ESLint globally
         if: matrix.language == 'javascript'
-        run: npm install eslint
+        run: npm install -g eslint
+        timeout-minutes: 10
 
       - name: Lint JS code
         if: matrix.language == 'javascript'
-        run: npx eslint .
+        run: eslint .
