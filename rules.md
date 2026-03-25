@@ -8,9 +8,6 @@ Always pull the latest changes:
 git pull origin main
 ```
 
-
-
-
 ## Creating a Feature Branch
 
 Create a new branch for each feature or fix:
