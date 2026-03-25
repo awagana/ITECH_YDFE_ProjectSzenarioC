@@ -19,4 +19,3 @@ class Quiz:
                 print("Falsch!")
 
         print(f"\nDein Score: {self.score}/{len(self.questions)}")
-        
