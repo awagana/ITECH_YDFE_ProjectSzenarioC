@@ -1,0 +1,58 @@
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    width: 100%; padding: 20px 50px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px);
+    margin-bottom: 50px;
+}
+
+.logo { color: white; font-size: 1.5rem; font-weight: bold; }
+.nav-links { list-style: none; display: flex; }
+.nav-links li { margin-left: 20px; }
+.nav-links a { color: white; text-decoration: none; cursor: pointer; }
+
+/* Container & Boxen */
+.container { width: 100%; display: flex; justify-content: center; }
+.form-box {
+    background: white; padding: 30px; border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    width: 90%; max-width: 400px; text-align: center;
+}
+
+h2 { margin-bottom: 20px; color: #1e3c72; }
+input {
+    width: 100%; padding: 12px; margin: 10px 0;
+    border: 1px solid #ccc; border-radius: 6px;
+}
+
+.btn {
+    width: 100%; padding: 12px; margin-top: 10px;
+    border: none; border-radius: 6px; cursor: pointer;
+    background: #1e3c72; color: white; font-weight: bold; transition: 0.3s;
+}
+
+.btn:hover { background: #2a5298; transform: translateY(-2px); }
+
+/* Quiz Spezifisch */
+.btn-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px;
+}
+
+.start-btn { background: #28a745; }
+.logout-btn { background: #dc3545; margin-top: 30px; font-size: 0.8rem; }
+
+.hidden { display: none !important; }
+
+#question { margin-bottom: 20px; font-size: 1.2rem; }
