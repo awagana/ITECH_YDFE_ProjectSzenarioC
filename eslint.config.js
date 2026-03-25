@@ -1,9 +1,9 @@
-export default [
+module.exports = [
   {
     files: ["**/*.js"],
     rules: {
-      "semi": ["error", "always"],       // zwingt Semikolons
-      "quotes": ["error", "double"]      // zwingt doppelte Anführungszeichen
+      semi: ["error", "always"],
+      quotes: ["error", "double"]
     }
   }
 ];
