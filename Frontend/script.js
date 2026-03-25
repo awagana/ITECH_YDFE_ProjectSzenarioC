@@ -11,6 +11,8 @@ const resultContainer = document.getElementById('result-container');
 const questionElement = document.getElementById('question');
 const answerButtons = document.getElementById('answer-buttons');
 
+
+
 // --- NAVIGATION ---
 function showLogin() {
     loginForm.classList.remove('hidden');
