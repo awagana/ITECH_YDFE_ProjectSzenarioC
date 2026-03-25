@@ -108,7 +108,7 @@ function selectAnswer(correct) {
 function showResults() {
     questionContainer.classList.add("hidden");
     resultContainer.classList.remove("hidden");
-    document.getElementById("score-text").innerText = `Ergebnis: ${score} von ${questions.length} Punkten!`;
+    document.getElementById('score-text').innerText = `Ergebnis: ${score} von ${questions.length} Punkten!`;
 }
 
 function restartQuiz() { startQuiz(); }
