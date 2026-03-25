@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App - Login & Play</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">QuizMaster 3000</div>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="#" onclick="showLogin()">Login</a></li>
+            <li><a href="#" onclick="showRegister()">Registrieren</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="form-box" id="login-form">
+            <h2>Anmelden</h2>
+            <input type="text" id="login-user" placeholder="Benutzername" required>
+            <input type="password" id="login-pass" placeholder="Passwort" required>
+            <button class="btn" onclick="handleLogin()">Einloggen</button>
+            <p>Noch kein Konto? <a href="#" onclick="showRegister()">Jetzt registrieren</a></p>
+        </div>
+
+        <div class="form-box hidden" id="register-form">
+            <h2>Konto erstellen</h2>
+            <input type="text" id="reg-user" placeholder="Wähle einen Benutzernamen" required>
+            <input type="password" id="reg-pass" placeholder="Wähle ein Passwort" required>
+            <button class="btn" onclick="handleRegister()">Registrieren</button>
+            <p>Bereits Mitglied? <a href="#" onclick="showLogin()">Zum Login</a></p>
+        </div>
+
+        <div class="form-box hidden" id="quiz-area">
+            <h2 id="welcome-text">Willkommen!</h2>
+            <div id="quiz-intro">
+                <p>Bereit für eine Runde?</p>
+                <button class="btn start-btn" onclick="startQuiz()">Spiel starten</button>
+            </div>
+
+            <div id="question-container" class="hidden">
+                <h3 id="question">Frage Text</h3>
+                <div id="answer-buttons" class="btn-grid"></div>
+            </div>
+
+            <div id="result-container" class="hidden">
+                <p id="score-text"></p>
+                <button class="btn" onclick="restartQuiz()">Nochmal spielen</button>
+            </div>
+
+            <button class="btn logout-btn" onclick="logout()">Ausloggen</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
