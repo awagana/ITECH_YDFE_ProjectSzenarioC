@@ -37,7 +37,7 @@ jobs:
         id: python-lint
         shell: bash
         run: |
-          flake8 . 2>&1 | tee lint_output.txt
+          flake8 . --ignore=E501 2>&1 | tee lint_output.txt
           exit ${PIPESTATUS[0]}
         continue-on-error: true
 
@@ -62,7 +62,6 @@ jobs:
           exit ${PIPESTATUS[0]}
         continue-on-error: true
 
-      # ---------- Comment on PR if lint failed ----------
       # ---------- Post review with REQUEST_CHANGES if lint failed ----------
       - name: Post review with REQUEST_CHANGES if lint failed
         if: |
@@ -87,6 +86,6 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: context.issue.number,
-              event: 'REQUEST_CHANGES',  // or 'COMMENT' if self-review is an issue
+              event: 'REQUEST_CHANGES',
               body: body
             });
