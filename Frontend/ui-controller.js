@@ -2,16 +2,16 @@ function showSection(id) {
     document.querySelectorAll(".glass-card").forEach(c => c.classList.add("hidden"));
     document.getElementById(id).classList.remove("hidden");
     
-    if(id === 'login-form' || id === 'register-form') {
-        document.getElementById("nav-login").classList.toggle("active", id === 'login-form');
-        document.getElementById("nav-register").classList.toggle("active", id === 'register-form');
+    if(id === "login-form" || id === "register-form") {
+        document.getElementById("nav-login").classList.toggle("active", id === "login-form");
+        document.getElementById("nav-register").classList.toggle("active", id === "register-form");
     }
 }
 
 function showSubView(viewId) {
     document.querySelectorAll(".sub-view").forEach(v => v.classList.add("hidden"));
     document.getElementById(viewId).classList.remove("hidden");
-    if(viewId === 'category-selection' || viewId === 'leaderboard-category-select') initCategoryMenus();
+    if(viewId === "category-selection" || viewId === "leaderboard-category-select") initCategoryMenus();
 }
 
 function initCategoryMenus() {
