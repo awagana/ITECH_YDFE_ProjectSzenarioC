@@ -16,7 +16,7 @@
 
 import sqlite3
 
-DB_DATEI = "quiz.db"          # Name der SQLite-Datenbank-Datei
+DB_DATEI = "question-DB/quiz.db"          # Name der SQLite-Datenbank-Datei
 
 
 def create_database() -> None:
