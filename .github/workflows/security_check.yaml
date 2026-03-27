@@ -1,0 +1,209 @@
+name: Security Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - main
+
+permissions:
+  pull-requests: write
+
+jobs:
+  security-check:
+    name: Security Scan (HTML, Python, JavaScript)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install security tools
+        run: |
+          pip install bandit detect-secrets
+          npm install -g retire htmlhint
+
+      - name: Detect secrets (detect-secrets)
+        id: secrets-scan
+        shell: bash
+        run: |
+          detect-secrets scan --all-files \
+            --exclude-files '\.git/.*' \
+            > /tmp/secrets-report.json
+          python3 -c "
+          import json, sys
+          report = json.load(open('/tmp/secrets-report.json'))
+          results = report.get('results', {})
+          if results:
+              lines = []
+              for file, findings in results.items():
+                  for f in findings:
+                      lines.append(f'SECRET FOUND in {file} at line {f[\"line_number\"]}: {f[\"type\"]}')
+              output = '\n'.join(lines)
+              print(output)
+              with open('secrets_output.txt', 'w') as out:
+                  out.write(output)
+              sys.exit(1)
+          else:
+              print('No secrets detected.')
+              with open('secrets_output.txt', 'w') as out:
+                  out.write('')
+          "
+        continue-on-error: true
+
+      - name: Post review – Secrets detected
+        if: steps.secrets-scan.outcome == 'failure' && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PAT_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const output = fs.readFileSync('secrets_output.txt', 'utf8');
+
+            const body = `## 🔐 Sensitive Data / Secrets gefunden\n\n` +
+              `Die folgenden Secrets oder sensiblen Daten wurden in diesem PR gefunden:\n\n` +
+              `\`\`\`\n${output}\n\`\`\`\n\n` +
+              `Bitte entferne alle Secrets aus dem Code und pushe die Änderungen.`;
+
+            await github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              event: 'REQUEST_CHANGES',
+              body: body
+            });
+
+      - name: Python security scan (Bandit)
+        id: bandit-scan
+        shell: bash
+        run: |
+          bandit -r . \
+            --exclude ./.git,./node_modules \
+            -f txt \
+            --severity-level medium \
+            --confidence-level medium \
+            -ll 2>&1 | tee bandit_output.txt
+          exit ${PIPESTATUS[0]}
+        continue-on-error: true
+
+      - name: Post review – Bandit issues found
+        if: steps.bandit-scan.outcome == 'failure' && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PAT_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const output = fs.readFileSync('bandit_output.txt', 'utf8');
+
+            const body = `## 🐍 Python Security-Fehler gefunden (Bandit)\n\n` +
+              `Die folgenden Sicherheitsprobleme wurden in Python-Dateien gefunden:\n\n` +
+              `\`\`\`\n${output}\n\`\`\`\n\n` +
+              `Bitte korrigiere alle Fehler und pushe die Änderungen.`;
+
+            await github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              event: 'REQUEST_CHANGES',
+              body: body
+            });
+
+      - name: JavaScript vulnerability scan (Retire.js)
+        id: retire-scan
+        shell: bash
+        run: |
+          retire --path . \
+            --outputformat text \
+            --severity medium 2>&1 | tee retire_output.txt
+          exit ${PIPESTATUS[0]}
+        continue-on-error: true
+
+      - name: Post review – Retire.js issues found
+        if: steps.retire-scan.outcome == 'failure' && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PAT_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const output = fs.readFileSync('retire_output.txt', 'utf8');
+
+            const body = `## 🟨 JavaScript Sicherheitsprobleme gefunden (Retire.js)\n\n` +
+              `Die folgenden Schwachstellen wurden in JavaScript-Dateien gefunden:\n\n` +
+              `\`\`\`\n${output}\n\`\`\`\n\n` +
+              `Bitte aktualisiere betroffene Bibliotheken und pushe die Änderungen.`;
+
+            await github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              event: 'REQUEST_CHANGES',
+              body: body
+            });
+
+      - name: HTML security lint (HTMLHint)
+        id: htmlhint-scan
+        shell: bash
+        run: |
+          find . -name "*.html" \
+            -not -path "./.git/*" \
+            -not -path "./node_modules/*" \
+            | xargs htmlhint \
+              --rules \
+                "tagname-lowercase:true,\
+                attr-lowercase:true,\
+                attr-value-double-quotes:true,\
+                doctype-first:true,\
+                tag-pair:true,\
+                spec-char-escape:true,\
+                id-unique:true,\
+                src-not-empty:true,\
+                title-require:true" 2>&1 | tee htmlhint_output.txt
+          exit ${PIPESTATUS[0]}
+        continue-on-error: true
+
+      - name: Post review – HTMLHint issues found
+        if: steps.htmlhint-scan.outcome == 'failure' && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PAT_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const output = fs.readFileSync('htmlhint_output.txt', 'utf8');
+
+            const body = `## 🌐 HTML Sicherheitsprobleme gefunden (HTMLHint)\n\n` +
+              `Die folgenden Probleme wurden in HTML-Dateien gefunden:\n\n` +
+              `\`\`\`\n${output}\n\`\`\`\n\n` +
+              `Bitte korrigiere alle Fehler und pushe die Änderungen.`;
+
+            await github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              event: 'REQUEST_CHANGES',
+              body: body
+            });
+
+      - name: Fail if any security check failed
+        if: |
+          steps.secrets-scan.outcome == 'failure' ||
+          steps.bandit-scan.outcome == 'failure' ||
+          steps.retire-scan.outcome == 'failure' ||
+          steps.htmlhint-scan.outcome == 'failure'
+        run: |
+          echo "One or more security checks failed. See above for details."
+          exit 1
