@@ -1,0 +1,136 @@
+name: Compiler Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - main
+
+permissions:
+  pull-requests: write
+
+jobs:
+  compiler-check:
+    name: Compiler Check (Python & JavaScript)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Python syntax check (py_compile)
+        id: python-check
+        shell: bash
+        run: |
+          ERRORS=""
+          while IFS= read -r -d '' file; do
+            OUTPUT=$(python3 -m py_compile "$file" 2>&1)
+            if [ $? -ne 0 ]; then
+              ERRORS="${ERRORS}❌ $file\n${OUTPUT}\n\n"
+            else
+              echo "✅ $file"
+            fi
+          done < <(find . \
+            -name "*.py" \
+            -not -path "./.git/*" \
+            -not -path "./node_modules/*" \
+            -print0)
+
+          if [ -n "$ERRORS" ]; then
+            printf "%b" "$ERRORS" | tee python_compile_output.txt
+            exit 1
+          else
+            echo "All Python files compiled successfully." | tee python_compile_output.txt
+          fi
+        continue-on-error: true
+
+      - name: Post review – Python compile errors found
+        if: steps.python-check.outcome == 'failure' && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PAT_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const output = fs.readFileSync('python_compile_output.txt', 'utf8');
+
+            const body = `## 🐍 Python Compiler-Fehler gefunden\n\n` +
+              `Die folgenden Python-Dateien konnten nicht kompiliert werden:\n\n` +
+              `\`\`\`\n${output}\n\`\`\`\n\n` +
+              `Bitte korrigiere alle Syntaxfehler und pushe die Änderungen.`;
+
+            await github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              event: 'REQUEST_CHANGES',
+              body: body
+            });
+
+      - name: JavaScript syntax check (node --check)
+        id: js-check
+        shell: bash
+        run: |
+          ERRORS=""
+          while IFS= read -r -d '' file; do
+            OUTPUT=$(node --check "$file" 2>&1)
+            if [ $? -ne 0 ]; then
+              ERRORS="${ERRORS}❌ $file\n${OUTPUT}\n\n"
+            else
+              echo "✅ $file"
+            fi
+          done < <(find . \
+            -name "*.js" \
+            -not -path "./.git/*" \
+            -not -path "./node_modules/*" \
+            -print0)
+
+          if [ -n "$ERRORS" ]; then
+            printf "%b" "$ERRORS" | tee js_compile_output.txt
+            exit 1
+          else
+            echo "All JavaScript files passed syntax check." | tee js_compile_output.txt
+          fi
+        continue-on-error: true
+
+      - name: Post review – JavaScript syntax errors found
+        if: steps.js-check.outcome == 'failure' && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PAT_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const output = fs.readFileSync('js_compile_output.txt', 'utf8');
+
+            const body = `## 🟨 JavaScript Compiler-Fehler gefunden\n\n` +
+              `Die folgenden JavaScript-Dateien konnten nicht kompiliert werden:\n\n` +
+              `\`\`\`\n${output}\n\`\`\`\n\n` +
+              `Bitte korrigiere alle Syntaxfehler und pushe die Änderungen.`;
+
+            await github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              event: 'REQUEST_CHANGES',
+              body: body
+            });
+
+      - name: Fail if any compiler check failed
+        if: |
+          steps.python-check.outcome == 'failure' ||
+          steps.js-check.outcome == 'failure'
+        run: |
+          echo "One or more compiler checks failed. See above for details."
+          exit 1
