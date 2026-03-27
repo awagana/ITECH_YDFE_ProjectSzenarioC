@@ -25,7 +25,7 @@
                 <input type="text" id="login-user" placeholder="Benutzername" required>
                 <input type="password" id="login-pass" placeholder="Passwort" required>
             </div>
-            <button class="btn btn-primary" onclick="handleLogin()">Einloggen</button>
+            <button type="button" class="btn btn-primary" onclick="handleLogin()">Einloggen</button>
             <p class="switch-text">Neu hier? <a href="#" onclick="showSection('register-form')">Account erstellen</a></p>
         </div>
 
@@ -35,28 +35,28 @@
                 <input type="text" id="reg-user" placeholder="Wähle einen Namen">
                 <input type="password" id="reg-pass" placeholder="Wähle ein Passwort">
             </div>
-            <button class="btn btn-primary" onclick="handleRegister()">Jetzt beitreten</button>
+            <button type="button" class="btn btn-primary" onclick="handleRegister()">Jetzt beitreten</button>
             <p class="switch-text">Bereits dabei? <a href="#" onclick="showSection('login-form')">Zum Login</a></p>
         </div>
 
         <div class="glass-card hidden" id="quiz-area">
             <h2 id="welcome-text">Hallo!</h2>
-            
+
             <div id="quiz-intro" class="sub-view">
                 <div class="main-menu">
-                    <button class="btn btn-play" onclick="showSubView('category-selection')"><span>🚀 Spiel starten</span></button>
+                    <button type="button" class="btn btn-play" onclick="showSubView('category-selection')"><span>🚀 Spiel starten</span></button>
                     <div class="menu-grid">
-                        <button class="btn btn-secondary" onclick="showSubView('leaderboard-category-select')">🏆 Ranking</button>
-                        <button class="btn btn-secondary" onclick="updateAchievements(); showSubView('achievements-view')">🏅 Erfolge</button>
-                        <button class="btn btn-secondary" onclick="showSubView('settings-view')">⚙️ Settings</button>
+                        <button type="button" class="btn btn-secondary" onclick="showSubView('leaderboard-category-select')">🏆 Ranking</button>
+                        <button type="button" class="btn btn-secondary" onclick="updateAchievements(); showSubView('achievements-view')">🏅 Erfolge</button>
+                        <button type="button" class="btn btn-secondary" onclick="showSubView('settings-view')">⚙️ Settings</button>
                     </div>
                 </div>
             </div>
-            
+
             <div id="category-selection" class="sub-view hidden">
                 <h3>Wähle ein Thema</h3>
                 <div id="category-buttons" class="answer-grid"></div>
-                <button class="btn btn-outline" onclick="showSubView('quiz-intro')" style="margin-top:15px">Zurück</button>
+                <button type="button" class="btn btn-outline" onclick="showSubView('quiz-intro')">Zurück</button>
             </div>
 
             <div id="question-container" class="sub-view hidden">
@@ -68,26 +68,26 @@
                 <div class="result-box">
                     <h3>Abgeschlossen!</h3>
                     <p id="score-text"></p>
-                    <button class="btn btn-primary" onclick="showSubView('quiz-intro')">Hauptmenü</button>
+                    <button type="button" class="btn btn-primary" onclick="showSubView('quiz-intro')">Hauptmenü</button>
                 </div>
             </div>
 
             <div id="leaderboard-category-select" class="sub-view hidden">
                 <h3>Ranking für welches Thema?</h3>
                 <div id="leaderboard-cat-buttons" class="answer-grid"></div>
-                <button class="btn btn-outline" onclick="showSubView('quiz-intro')" style="margin-top:15px">Zurück</button>
+                <button type="button" class="btn btn-outline" onclick="showSubView('quiz-intro')">Zurück</button>
             </div>
 
             <div id="leaderboard-view" class="sub-view hidden">
                 <h3 id="leaderboard-title">🏆 Ranking</h3>
                 <div id="leaderboard-list" class="list-container"></div>
-                <button class="btn btn-outline" onclick="showSubView('leaderboard-category-select')">Zurück zur Auswahl</button>
+                <button type="button" class="btn btn-outline" onclick="showSubView('leaderboard-category-select')">Zurück zur Auswahl</button>
             </div>
 
             <div id="achievements-view" class="sub-view hidden">
                 <h3>🏅 Deine Erfolge</h3>
                 <div id="achievements-list" class="list-container"></div>
-                <button class="btn btn-outline" onclick="showSubView('quiz-intro')">Zurück</button>
+                <button type="button" class="btn btn-outline" onclick="showSubView('quiz-intro')">Zurück</button>
             </div>
 
             <div id="settings-view" class="sub-view hidden">
@@ -96,8 +96,8 @@
                     <label>Helligkeit</label>
                     <input type="range" min="30" max="150" value="100" class="slider" oninput="changeBrightness(this.value)">
                 </div>
-                <button class="btn btn-secondary" onclick="showSubView('how-to-play-view')" style="margin-bottom: 10px;">📖 Anleitung</button>
-                <button class="btn btn-primary" onclick="showSubView('quiz-intro')">Fertig</button>
+                <button type="button" class="btn btn-secondary" onclick="showSubView('how-to-play-view')">📖 Anleitung</button>
+                <button type="button" class="btn btn-primary" onclick="showSubView('quiz-intro')">Fertig</button>
             </div>
 
             <div id="how-to-play-view" class="sub-view hidden">
@@ -105,13 +105,15 @@
                 <div class="info-card">
                     <p>Beantworte Fragen präzise und schnell. Dein Highscore wird automatisch gespeichert.</p>
                 </div>
-                <button class="btn btn-outline" onclick="showSubView('settings-view')">Zurück</button>
+                <button type="button" class="btn btn-outline" onclick="showSubView('settings-view')">Zurück</button>
             </div>
 
-            <button class="logout-link" onclick="logout()">Sicher ausloggen</button>
+            <button type="button" class="logout-link" onclick="logout()">Sicher ausloggen</button>
         </div>
     </div>
-
-    <script src="script.js"></script>
+<script src="data.js"></script>
+<script src="ui-controller.js"></script>
+<script src="auth.js"></script>
+<script src="quiz-logic.js"></script>
 </body>
 </html>
