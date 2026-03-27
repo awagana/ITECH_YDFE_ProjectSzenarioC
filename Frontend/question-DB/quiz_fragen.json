@@ -1,0 +1,224 @@
+{
+  "quiz_fragen": [
+    {
+      "frage": "Was ist die Hauptstadt von Australien?",
+      "antworten": {
+        "A": "Sydney",
+        "B": "Melbourne",
+        "C": "Canberra",
+        "D": "Brisbane"
+      },
+      "richtige_antwort": "C",
+      "tag": "Geographie"
+    },
+    {
+      "frage": "Welcher Fluss ist der längste in Europa?",
+      "antworten": {
+        "A": "Donau",
+        "B": "Rhein",
+        "C": "Wolga",
+        "D": "Seine"
+      },
+      "richtige_antwort": "C",
+      "tag": "Geographie"
+    },
+    {
+      "frage": "In welchem Jahr fiel die Berliner Mauer?",
+      "antworten": {
+        "A": "1987",
+        "B": "1989",
+        "C": "1990",
+        "D": "1991"
+      },
+      "richtige_antwort": "B",
+      "tag": "Geschichte"
+    },
+    {
+      "frage": "Wer war der erste Präsident der USA?",
+      "antworten": {
+        "A": "Thomas Jefferson",
+        "B": "Abraham Lincoln",
+        "C": "George Washington",
+        "D": "John Adams"
+      },
+      "richtige_antwort": "C",
+      "tag": "Geschichte"
+    },
+    {
+      "frage": "Welches ist das chemische Symbol für Gold?",
+      "antworten": {
+        "A": "Go",
+        "B": "Gd",
+        "C": "Au",
+        "D": "Ag"
+      },
+      "richtige_antwort": "C",
+      "tag": "Wissenschaft"
+    },
+    {
+      "frage": "Wie viele Planeten hat unser Sonnensystem?",
+      "antworten": {
+        "A": "7",
+        "B": "8",
+        "C": "9",
+        "D": "10"
+      },
+      "richtige_antwort": "B",
+      "tag": "Wissenschaft"
+    },
+    {
+      "frage": "Wer hat das Buch 'Harry Potter' geschrieben?",
+      "antworten": {
+        "A": "J.R.R. Tolkien",
+        "B": "J.K. Rowling",
+        "C": "Stephen King",
+        "D": "George R.R. Martin"
+      },
+      "richtige_antwort": "B",
+      "tag": "Literatur"
+    },
+    {
+      "frage": "Welcher Autor schrieb 'Der Herr der Ringe'?",
+      "antworten": {
+        "A": "J.K. Rowling",
+        "B": "J.R.R. Tolkien",
+        "C": "C.S. Lewis",
+        "D": "Terry Pratchett"
+      },
+      "richtige_antwort": "B",
+      "tag": "Literatur"
+    },
+    {
+      "frage": "Welche Band sang 'Bohemian Rhapsody'?",
+      "antworten": {
+        "A": "The Rolling Stones",
+        "B": "Led Zeppelin",
+        "C": "Queen",
+        "D": "Pink Floyd"
+      },
+      "richtige_antwort": "C",
+      "tag": "Musik"
+    },
+    {
+      "frage": "Wer ist der 'King of Pop'?",
+      "antworten": {
+        "A": "Elvis Presley",
+        "B": "Prince",
+        "C": "Michael Jackson",
+        "D": "Justin Timberlake"
+      },
+      "richtige_antwort": "C",
+      "tag": "Musik"
+    },
+    {
+      "frage": "In welchem Film spielt Leonardo DiCaprio den Jack Dawson?",
+      "antworten": {
+        "A": "Inception",
+        "B": "Titanic",
+        "C": "The Revenant",
+        "D": "The Wolf of Wall Street"
+      },
+      "richtige_antwort": "B",
+      "tag": "Film & Fernsehen"
+    },
+    {
+      "frage": "Welche Serie handelt von einer Familie namens Stark und Lannister?",
+      "antworten": {
+        "A": "The Witcher",
+        "B": "Stranger Things",
+        "C": "Game of Thrones",
+        "D": "The Mandalorian"
+      },
+      "richtige_antwort": "C",
+      "tag": "Film & Fernsehen"
+    },
+    {
+      "frage": "Welche Sportart wird im 'Wimbledon' ausgetragen?",
+      "antworten": {
+        "A": "Fußball",
+        "B": "Tennis",
+        "C": "Golf",
+        "D": "Leichtathletik"
+      },
+      "richtige_antwort": "B",
+      "tag": "Sport"
+    },
+    {
+      "frage": "Wie viele Spieler hat eine Fußballmannschaft auf dem Feld (inkl. Torwart)?",
+      "antworten": {
+        "A": "9",
+        "B": "10",
+        "C": "11",
+        "D": "12"
+      },
+      "richtige_antwort": "C",
+      "tag": "Sport"
+    },
+    {
+      "frage": "Welches ist das größte Organ des menschlichen Körpers?",
+      "antworten": {
+        "A": "Leber",
+        "B": "Haut",
+        "C": "Lunge",
+        "D": "Gehirn"
+      },
+      "richtige_antwort": "B",
+      "tag": "Biologie"
+    },
+    {
+      "frage": "Wie viele Chromosomen hat ein Mensch normalerweise?",
+      "antworten": {
+        "A": "23",
+        "B": "46",
+        "C": "48",
+        "D": "92"
+      },
+      "richtige_antwort": "B",
+      "tag": "Biologie"
+    },
+    {
+      "frage": "Welche Farbe hat die 'Schwarze Witwe' Spinne auf ihrem Rücken?",
+      "antworten": {
+        "A": "Rot",
+        "B": "Gelb",
+        "C": "Weiß",
+        "D": "Orange"
+      },
+      "richtige_antwort": "A",
+      "tag": "Tierwelt"
+    },
+    {
+      "frage": "Welches ist das schnellste Landtier der Welt?",
+      "antworten": {
+        "A": "Löwe",
+        "B": "Gepard",
+        "C": "Adler",
+        "D": "Pferd"
+      },
+      "richtige_antwort": "B",
+      "tag": "Tierwelt"
+    },
+    {
+      "frage": "Wer malte die 'Mona Lisa'?",
+      "antworten": {
+        "A": "Vincent van Gogh",
+        "B": "Pablo Picasso",
+        "C": "Leonardo da Vinci",
+        "D": "Michelangelo"
+      },
+      "richtige_antwort": "C",
+      "tag": "Kunst"
+    },
+    {
+      "frage": "Welcher Künstler ist bekannt für seine 'Sonnenblumen'?",
+      "antworten": {
+        "A": "Claude Monet",
+        "B": "Salvador Dalí",
+        "C": "Vincent van Gogh",
+        "D": "Rembrandt"
+      },
+      "richtige_antwort": "C",
+      "tag": "Kunst"
+    }
+  ]
+}
