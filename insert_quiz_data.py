@@ -74,12 +74,12 @@ def insert_data() -> None:
             neu_eingefuegt += 1
 
     # === Abschluss-Statistik ===
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("✅ IMPORT ERFOLGREICH ABGESCHLOSSEN!")
     print(f"   Neu eingefügt : {neu_eingefuegt} Fragen")
     print(f"   Übersprungen  : {uebersprungen} Fragen")
     print(f"   Gesamt in DB  : {neu_eingefuegt + uebersprungen} Fragen")
-    print("="*60)
+    print("=" * 60)
 
 
 if __name__ == "__main__":
