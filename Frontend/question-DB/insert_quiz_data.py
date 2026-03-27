@@ -86,9 +86,9 @@ if __name__ == "__main__":
     try:
         insert_data()
     except FileNotFoundError:
-        print(f"❌ JSON-Datei '{JSON_DATEI}' nicht gefunden!")
+        print(f"❌ JSON-Datei '{JSON_DATEI}' nicht gefunden!!!")
     except json.JSONDecodeError:
-        print(f"❌ '{JSON_DATEI}' ist keine gültige JSON-Datei!")
+        print(f"❌ '{JSON_DATEI}' ist keine gültige JSON-Datei!!!")
     except KeyError as e:
         print(f"❌ Fehlender Schlüssel in der JSON: {e}")
     except sqlite3.Error as e:
