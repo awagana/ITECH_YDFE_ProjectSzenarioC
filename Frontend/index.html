@@ -3,54 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz App - Login & Play</title>
+    <title>QuizMaster 3000 | Ultimate Quiz</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <div class="animated-bg"></div>
+
     <nav class="navbar">
-        <div class="logo">QuizMaster 3000</div>
+        <div class="logo"><span>Quiz</span>Master 3000</div>
         <ul class="nav-links" id="nav-menu">
-            <li><a href="#" onclick="showLogin()">Login</a></li>
-            <li><a href="#" onclick="showRegister()">Registrieren</a></li>
+            <li><a href="#" id="nav-login" class="nav-btn active" onclick="showSection('login-form')">Login</a></li>
+            <li><a href="#" id="nav-register" class="nav-btn" onclick="showSection('register-form')">Registrieren</a></li>
         </ul>
     </nav>
 
     <div class="container">
-        <div class="form-box" id="login-form">
-            <h2>Anmelden</h2>
-            <input type="text" id="login-user" placeholder="Benutzername" required>
-            <input type="password" id="login-pass" placeholder="Passwort" required>
-            <button class="btn" onclick="handleLogin()">Einloggen</button>
-            <p>Noch kein Konto? <a href="#" onclick="showRegister()">Jetzt registrieren</a></p>
+        <div class="glass-card" id="login-form">
+            <h2>Willkommen zurück</h2>
+            <div class="input-group">
+                <input type="text" id="login-user" placeholder="Benutzername" required>
+                <input type="password" id="login-pass" placeholder="Passwort" required>
+            </div>
+            <button class="btn btn-primary" onclick="handleLogin()">Einloggen</button>
+            <p class="switch-text">Neu hier? <a href="#" onclick="showSection('register-form')">Account erstellen</a></p>
         </div>
 
-        <div class="form-box hidden" id="register-form">
+        <div class="glass-card hidden" id="register-form">
             <h2>Konto erstellen</h2>
-            <input type="text" id="reg-user" placeholder="Wähle einen Benutzernamen" required>
-            <input type="password" id="reg-pass" placeholder="Wähle ein Passwort" required>
-            <button class="btn" onclick="handleRegister()">Registrieren</button>
-            <p>Bereits Mitglied? <a href="#" onclick="showLogin()">Zum Login</a></p>
+            <div class="input-group">
+                <input type="text" id="reg-user" placeholder="Wähle einen Namen">
+                <input type="password" id="reg-pass" placeholder="Wähle ein Passwort">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegister()">Jetzt beitreten</button>
+            <p class="switch-text">Bereits dabei? <a href="#" onclick="showSection('login-form')">Zum Login</a></p>
         </div>
 
-        <div class="form-box hidden" id="quiz-area">
-            <h2 id="welcome-text">Willkommen!</h2>
-            <div id="quiz-intro">
-                <p>Bereit für eine Runde?</p>
-                <button class="btn start-btn" onclick="startQuiz()">Spiel starten</button>
+        <div class="glass-card hidden" id="quiz-area">
+            <h2 id="welcome-text">Hallo!</h2>
+            
+            <div id="quiz-intro" class="sub-view">
+                <div class="main-menu">
+                    <button class="btn btn-play" onclick="startQuiz()"><span>🚀 Spiel starten</span></button>
+                    <div class="menu-grid">
+                        <button class="btn btn-secondary" onclick="updateLeaderboard(); showSubView('leaderboard-view')">🏆 Ranking</button>
+                        <button class="btn btn-secondary" onclick="updateAchievements(); showSubView('achievements-view')">🏅 Erfolge</button>
+                        <button class="btn btn-secondary" onclick="showSubView('settings-view')">⚙️ Settings</button>
+                    </div>
+                </div>
             </div>
 
-            <div id="question-container" class="hidden">
-                <h3 id="question">Frage Text</h3>
-                <div id="answer-buttons" class="btn-grid"></div>
+            <div id="question-container" class="sub-view hidden">
+                <h3 id="question">Lade Frage...</h3>
+                <div id="answer-buttons" class="answer-grid"></div>
             </div>
 
-            <div id="result-container" class="hidden">
-                <p id="score-text"></p>
-                <button class="btn" onclick="restartQuiz()">Nochmal spielen</button>
+            <div id="result-container" class="sub-view hidden">
+                <div class="result-box">
+                    <h3>Abgeschlossen!</h3>
+                    <p id="score-text"></p>
+                    <button class="btn btn-primary" onclick="showSubView('quiz-intro')">Zurück zum Menü</button>
+                </div>
             </div>
 
-            <button class="btn logout-btn" onclick="logout()">Ausloggen</button>
+            <div id="leaderboard-view" class="sub-view hidden">
+                <h3>🏆 Global Ranking</h3>
+                <div id="leaderboard-list" class="list-container"></div>
+                <button class="btn btn-outline" onclick="showSubView('quiz-intro')">Zurück</button>
+            </div>
+
+            <div id="achievements-view" class="sub-view hidden">
+                <h3>🏅 Deine Erfolge</h3>
+                <div id="achievements-list" class="list-container"></div>
+                <button class="btn btn-outline" onclick="showSubView('quiz-intro')">Zurück</button>
+            </div>
+
+            <div id="settings-view" class="sub-view hidden">
+                <h3>Einstellungen</h3>
+                <div class="setting-control">
+                    <label>Helligkeit</label>
+                    <input type="range" min="30" max="150" value="100" class="slider" oninput="changeBrightness(this.value)">
+                </div>
+                <button class="btn btn-secondary" onclick="showSubView('how-to-play-view')" style="margin-bottom: 10px;">📖 Anleitung</button>
+                <button class="btn btn-primary" onclick="showSubView('quiz-intro')">Fertig</button>
+            </div>
+
+            <div id="how-to-play-view" class="sub-view hidden">
+                <h3>Anleitung</h3>
+                <div class="info-card">
+                    <p>Beantworte Fragen präzise und schnell. Dein Highscore wird automatisch gespeichert.</p>
+                </div>
+                <button class="btn btn-outline" onclick="showSubView('settings-view')">Zurück</button>
+            </div>
+
+            <button class="logout-link" onclick="logout()">Sicher ausloggen</button>
         </div>
     </div>
 
