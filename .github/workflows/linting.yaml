@@ -63,7 +63,8 @@ jobs:
         continue-on-error: true
 
       # ---------- Comment on PR if lint failed ----------
-      - name: Comment on PR if lint failed
+      # ---------- Post review with REQUEST_CHANGES if lint failed ----------
+      - name: Post review with REQUEST_CHANGES if lint failed
         if: |
           (matrix.language == 'python' && steps.python-lint.outcome == 'failure') ||
           (matrix.language == 'javascript' && steps.js-lint.outcome == 'failure')
@@ -80,11 +81,12 @@ jobs:
             const body = `## ${emoji} ${linter} Lint-Fehler gefunden\n\n` +
               `Die folgenden Lint-Fehler wurden in diesem PR gefunden:\n\n` +
               `\`\`\`\n${lintOutput}\n\`\`\`\n\n` +
-              `Bitte korrigiere die Fehler, bevor dieser PR gemergt werden kann.`;
+              `Bitte korrigiere alle Fehler und pushe die Änderungen.`;
 
-            await github.rest.issues.createComment({
-              issue_number: context.issue.number,
+            await github.rest.pulls.createReview({
               owner: context.repo.owner,
               repo: context.repo.repo,
+              pull_number: context.issue.number,
+              event: 'REQUEST_CHANGES',  // or 'COMMENT' if self-review is an issue
               body: body
             });
