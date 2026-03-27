@@ -3,7 +3,7 @@
 # SCRIPT 2: Daten aus JSON in die Datenbank einfügen
 # ========================================================
 # Dieses Script liest deine quiz_fragen.json und fügt alle Fragen in die Datenbank ein.
-# 
+#
 # Besondere Features:
 # - Vor jedem Einfügen wird geprüft, ob die Frage in dieser Kategorie bereits existiert.
 # - Die Prüfung ist CASE-INSENSITIVE → "Was ist die Hauptstadt..." und "was ist die hauptstadt..." werden als gleich erkannt.
@@ -59,7 +59,7 @@ def insert_data() -> None:
 
             # === Neue Frage einfügen ===
             cursor.execute('''
-                INSERT INTO fragen 
+                INSERT INTO fragen
                 (frage, antwort_a, antwort_b, antwort_c, antwort_d, richtige_antwort, tag)
                 VALUES (?, ?, ?, ?, ?, ?, ?)
             ''', (
@@ -75,7 +75,7 @@ def insert_data() -> None:
 
     # === Abschluss-Statistik ===
     print("\n" + "="*60)
-    print(f"✅ IMPORT ERFOLGREICH ABGESCHLOSSEN!")
+    print("✅ IMPORT ERFOLGREICH ABGESCHLOSSEN!")
     print(f"   Neu eingefügt : {neu_eingefuegt} Fragen")
     print(f"   Übersprungen  : {uebersprungen} Fragen")
     print(f"   Gesamt in DB  : {neu_eingefuegt + uebersprungen} Fragen")

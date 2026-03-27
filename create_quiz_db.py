@@ -4,7 +4,7 @@
 # ========================================================
 # Dieses Script legt die SQLite-Datenbank und die Tabelle "fragen" an.
 # Es wird NUR EINMAL ausgeführt (oder wenn du die Tabelle neu anlegen willst).
-# 
+#
 # WICHTIG:
 # - Es wird eine UNIQUE-Constraint auf (frage + tag) gesetzt.
 # - Dadurch kann die gleiche Frage in derselben Kategorie nicht doppelt vorkommen.
