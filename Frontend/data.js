@@ -3,7 +3,7 @@ let quizData = {};
 // Funktion zum Laden der Daten vom Flask-Server
 async function loadQuizData() {
     try {
-        const response = await fetch('http://127.0.0.1:5000/api/questions');
+        const response = await fetch("http://127.0.0.1:5000/api/questions");
         if (!response.ok) throw new Error("Server-Antwort war nicht ok");
         
         quizData = await response.json();
