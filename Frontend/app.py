@@ -10,10 +10,12 @@ CORS(app)
 # Da app.py im Hauptordner liegt, muss sie in 'question-DB' schauen
 DB_PATH = os.path.join("question-DB", "quiz.db")
 
+
 def get_db_connection():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
+
 
 @app.route('/api/questions')
 def get_questions():
@@ -40,6 +42,5 @@ def get_questions():
         return jsonify(quiz_data)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
