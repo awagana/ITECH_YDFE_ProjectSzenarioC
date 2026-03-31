@@ -29,7 +29,7 @@ def get_questions():
             tag = row['tag']
             if tag not in quiz_data:
                 quiz_data[tag] = []
-            
+
             quiz_data[tag].append({
                 "q": row['frage'],
                 "a": [
@@ -42,5 +42,10 @@ def get_questions():
         return jsonify(quiz_data)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    # Bandit akzeptiert das, weil der Wert nicht mehr "hart" als True drinsteht
+    # Standardmäßig ist der Debug-Modus jetzt aus (False)
+    is_debug = os.environ.get('FLASK_DEBUG', 'false').lower() == 'true'
+    app.run(debug=is_debug, port=5000)
