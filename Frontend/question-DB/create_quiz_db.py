@@ -6,6 +6,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_DIR = os.path.join(BASE_DIR, "question-DB")
 DB_DATEI = os.path.join(DB_DIR, "quiz.db")
 
+
 def setup():
     if not os.path.exists(DB_DIR):
         os.makedirs(DB_DIR)
@@ -26,7 +27,7 @@ def setup():
                 UNIQUE(frage, tag)
             )
         ''')
-        
+
         conn.execute('''
             CREATE TABLE IF NOT EXISTS users (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -35,6 +36,7 @@ def setup():
             )
         ''')
         print(f"✅ Datenbank synchronisiert: {DB_DATEI}")
+
 
 if __name__ == "__main__":
     setup()

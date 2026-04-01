@@ -11,11 +11,13 @@ CORS(app)  # Erlaubt deinem Frontend den Zugriff auf das Backend
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, "question-DB", "quiz.db")
 
+
 def get_db_connection():
     """Stellt eine Verbindung zur SQLite-Datenbank her."""
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
+
 
 # ==========================================
 # ROUTE: QUIZ-FRAGEN LADEN
@@ -45,6 +47,7 @@ def get_questions():
         return jsonify(quiz_data)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
 
 # ==========================================
 # ROUTE: REGISTRIERUNG
@@ -77,6 +80,7 @@ def register():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+
 # ==========================================
 # ROUTE: LOGIN
 # ==========================================
@@ -92,7 +96,7 @@ def login():
     try:
         conn = get_db_connection()
         user = conn.execute(
-            "SELECT * FROM users WHERE username = ?", 
+            "SELECT * FROM users WHERE username = ?",
             (username,)
         ).fetchone()
         conn.close()
@@ -111,6 +115,7 @@ def login():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
 
 # ==========================================
 # SERVER STARTEN
