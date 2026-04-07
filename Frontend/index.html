@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuizMaster 3000 | Ultimate Quiz</title>
+    <title>QuizMaster 3000 | Ultimate Challenge</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,6 +19,7 @@
     </nav>
 
     <div class="container">
+        
         <div class="glass-card" id="login-form">
             <h2>Willkommen zurück</h2>
             <div class="input-group">
@@ -60,6 +61,9 @@
             </div>
 
             <div id="question-container" class="sub-view hidden">
+                <div id="timer-display" style="font-size: 1.5rem; color: #ff4757; font-weight: bold; margin-bottom: 15px; text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);">
+                    Zeit: 10s
+                </div>
                 <h3 id="question">Lade Frage...</h3>
                 <div id="answer-buttons" class="answer-grid"></div>
             </div>
@@ -67,8 +71,8 @@
             <div id="result-container" class="sub-view hidden">
                 <div class="result-box">
                     <h3>Abgeschlossen!</h3>
-                    <p id="score-text"></p>
-                    <button type="button" class="btn btn-primary" onclick="showSubView('quiz-intro')">Hauptmenü</button>
+                    <div id="score-text"></div>
+                    <button type="button" class="btn btn-primary" onclick="showSubView('quiz-intro')" style="margin-top: 20px;">Hauptmenü</button>
                 </div>
             </div>
 
@@ -103,17 +107,19 @@
             <div id="how-to-play-view" class="sub-view hidden">
                 <h3>Anleitung</h3>
                 <div class="info-card">
-                    <p>Beantworte Fragen präzise und schnell. Dein Highscore wird automatisch gespeichert.</p>
+                    <p>Du hast genau 10 Sekunden Zeit. Beantworte so viele Fragen wie möglich! Dein Highscore wird automatisch gespeichert.</p>
                 </div>
                 <button type="button" class="btn btn-outline" onclick="showSubView('settings-view')">Zurück</button>
             </div>
 
-            <button type="button" class="logout-link" onclick="logout()">Sicher ausloggen</button>
+            <button type="button" class="logout-link" onclick="logout()" style="margin-top: 30px; background: none; border: none; color: rgba(255,255,255,0.5); cursor: pointer; text-decoration: underline;">Sicher ausloggen</button>
         </div>
     </div>
-<script src="data.js"></script>
-<script src="ui-controller.js"></script>
-<script src="auth.js"></script>
-<script src="quiz-logic.js"></script>
+
+    <script src="data.js"></script>
+    <script src="ui-controller.js"></script>
+    <script src="auth.js"></script>
+    <script src="quiz-logic.js"></script>
+
 </body>
 </html>

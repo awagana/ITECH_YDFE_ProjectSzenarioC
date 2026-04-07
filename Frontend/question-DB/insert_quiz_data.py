@@ -21,8 +21,8 @@ import json
 import sqlite3
 from typing import Any
 
-JSON_DATEI = "question-DB/quiz_fragen.json"   # Pfad zu deiner JSON-Datei
-DB_DATEI = "question-DB/quiz.db"              # Muss mit create_quiz_db.py übereinstimmen
+JSON_DATEI = "quiz_fragen.json"   # Pfad zu deiner JSON-Datei
+DB_DATEI = "quiz.db"              # Muss mit create_quiz_db.py übereinstimmen
 
 
 def load_json() -> list[dict[str, Any]]:

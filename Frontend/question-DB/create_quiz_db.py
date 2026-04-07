@@ -27,6 +27,15 @@ def setup():
                 UNIQUE(frage, tag)
             )
         ''')
+        conn.execute('''
+    CREATE TABLE IF NOT EXISTS scores (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT NOT NULL,
+        category TEXT NOT NULL,
+        score INTEGER NOT NULL,
+        UNIQUE(username, category) ON CONFLICT REPLACE
+    )
+''')
 
         conn.execute('''
             CREATE TABLE IF NOT EXISTS users (
