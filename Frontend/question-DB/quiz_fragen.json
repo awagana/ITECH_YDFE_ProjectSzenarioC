@@ -23,6 +23,39 @@
       "tag": "Geographie"
     },
     {
+      "frage": "Welcher Ozean liegt zwischen Afrika und Amerika?",
+      "antworten": {
+        "A": "Pazifik",
+        "B": "Indischer Ozean",
+        "C": "Atlantik",
+        "D": "Arktischer Ozean"
+      },
+      "richtige_antwort": "C",
+      "tag": "Geographie"
+    },
+    {
+      "frage": "In welchem Land liegt das Atlasgebirge?",
+      "antworten": {
+        "A": "Marokko",
+        "B": "Griechenland",
+        "C": "Chile",
+        "D": "Ägypten"
+      },
+      "richtige_antwort": "A",
+      "tag": "Geographie"
+    },
+    {
+      "frage": "Welches Land hat die meisten Einwohner der Welt?",
+      "antworten": {
+        "A": "Russland",
+        "B": "Indien",
+        "C": "USA",
+        "D": "China"
+      },
+      "richtige_antwort": "B",
+      "tag": "Geographie"
+    },
+    {
       "frage": "In welchem Jahr fiel die Berliner Mauer?",
       "antworten": {
         "A": "1987",
@@ -42,6 +75,39 @@
         "D": "John Adams"
       },
       "richtige_antwort": "C",
+      "tag": "Geschichte"
+    },
+    {
+      "frage": "Welches Volk baute die Pyramiden von Gizeh?",
+      "antworten": {
+        "A": "Die Römer",
+        "B": "Die Inka",
+        "C": "Die Ägypter",
+        "D": "Die Griechen"
+      },
+      "richtige_antwort": "C",
+      "tag": "Geschichte"
+    },
+    {
+      "frage": "Wie hieß das Schiff, das 1912 nach einer Kollision mit einem Eisberg sank?",
+      "antworten": {
+        "A": "Bismarck",
+        "B": "Lusitania",
+        "C": "Titanic",
+        "D": "Santa Maria"
+      },
+      "richtige_antwort": "C",
+      "tag": "Geschichte"
+    },
+    {
+      "frage": "Welches Ereignis markiert den Beginn der Französischen Revolution 1789?",
+      "antworten": {
+        "A": "Die Krönung Napoleons",
+        "B": "Der Sturm auf die Bastille",
+        "C": "Der Bau von Schloss Versailles",
+        "D": "Die Schlacht von Waterloo"
+      },
+      "richtige_antwort": "B",
       "tag": "Geschichte"
     },
     {
@@ -67,6 +133,39 @@
       "tag": "Wissenschaft"
     },
     {
+      "frage": "Was ist die Einheit für den elektrischen Widerstand?",
+      "antworten": {
+        "A": "Volt",
+        "B": "Ampere",
+        "C": "Ohm",
+        "D": "Watt"
+      },
+      "richtige_antwort": "C",
+      "tag": "Wissenschaft"
+    },
+    {
+      "frage": "Welcher Wissenschaftler formulierte die Relativitätstheorie?",
+      "antworten": {
+        "A": "Isaac Newton",
+        "B": "Albert Einstein",
+        "C": "Stephen Hawking",
+        "D": "Marie Curie"
+      },
+      "richtige_antwort": "B",
+      "tag": "Wissenschaft"
+    },
+    {
+      "frage": "Aus welchem Material bestehen Diamanten?",
+      "antworten": {
+        "A": "Silizium",
+        "B": "Eisen",
+        "C": "Kohlenstoff",
+        "D": "Magnesium"
+      },
+      "richtige_antwort": "C",
+      "tag": "Wissenschaft"
+    },
+    {
       "frage": "Wer hat das Buch 'Harry Potter' geschrieben?",
       "antworten": {
         "A": "J.R.R. Tolkien",
@@ -86,6 +185,39 @@
         "D": "Terry Pratchett"
       },
       "richtige_antwort": "B",
+      "tag": "Literatur"
+    },
+    {
+      "frage": "Wie heißt der Protagonist in Goethes berühmtestem Drama?",
+      "antworten": {
+        "A": "Werther",
+        "B": "Faust",
+        "C": "Mephisto",
+        "D": "Egmont"
+      },
+      "richtige_antwort": "B",
+      "tag": "Literatur"
+    },
+    {
+      "frage": "Wer schrieb das Tagebuch eines jungen jüdischen Mädchens während des Zweiten Weltkriegs?",
+      "antworten": {
+        "A": "Astrid Lindgren",
+        "B": "Anne Frank",
+        "C": "Enid Blyton",
+        "D": "Virginia Woolf"
+      },
+      "richtige_antwort": "B",
+      "tag": "Literatur"
+    },
+    {
+      "frage": "In welchem Land spielt Shakespeares Tragödie 'Romeo und Julia'?",
+      "antworten": {
+        "A": "Spanien",
+        "B": "Frankreich",
+        "C": "Italien",
+        "D": "England"
+      },
+      "richtige_antwort": "C",
       "tag": "Literatur"
     },
     {
@@ -111,6 +243,39 @@
       "tag": "Musik"
     },
     {
+      "frage": "Welches Instrument spielte Ludwig van Beethoven hauptsächlich?",
+      "antworten": {
+        "A": "Violine",
+        "B": "Klavier",
+        "C": "Flöte",
+        "D": "Gitarre"
+      },
+      "richtige_antwort": "B",
+      "tag": "Musik"
+    },
+    {
+      "frage": "Wie viele Saiten hat eine klassische Gitarre normalerweise?",
+      "antworten": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "12"
+      },
+      "richtige_antwort": "C",
+      "tag": "Musik"
+    },
+    {
+      "frage": "Welche Musikrichtung wird oft mit Bob Marley assoziiert?",
+      "antworten": {
+        "A": "Jazz",
+        "B": "Reggae",
+        "C": "Blues",
+        "D": "Hip-Hop"
+      },
+      "richtige_antwort": "B",
+      "tag": "Musik"
+    },
+    {
       "frage": "In welchem Film spielt Leonardo DiCaprio den Jack Dawson?",
       "antworten": {
         "A": "Inception",
@@ -128,6 +293,39 @@
         "B": "Stranger Things",
         "C": "Game of Thrones",
         "D": "The Mandalorian"
+      },
+      "richtige_antwort": "C",
+      "tag": "Film & Fernsehen"
+    },
+    {
+      "frage": "Wie heißt der grüne Oger in der gleichnamigen Filmreihe?",
+      "antworten": {
+        "A": "Fiona",
+        "B": "Donkey",
+        "C": "Shrek",
+        "D": "Puss"
+      },
+      "richtige_antwort": "C",
+      "tag": "Film & Fernsehen"
+    },
+    {
+      "frage": "In welcher fiktiven Stadt leben die Simpsons?",
+      "antworten": {
+        "A": "Quahog",
+        "B": "South Park",
+        "C": "Springfield",
+        "D": "Shelbyville"
+      },
+      "richtige_antwort": "C",
+      "tag": "Film & Fernsehen"
+    },
+    {
+      "frage": "Wer führte Regie bei den 'Star Wars' Filmen (Original-Trilogie)?",
+      "antworten": {
+        "A": "Steven Spielberg",
+        "B": "James Cameron",
+        "C": "George Lucas",
+        "D": "Christopher Nolan"
       },
       "richtige_antwort": "C",
       "tag": "Film & Fernsehen"
@@ -155,6 +353,39 @@
       "tag": "Sport"
     },
     {
+      "frage": "Welcher Basketballer wird oft 'Air Jordan' genannt?",
+      "antworten": {
+        "A": "LeBron James",
+        "B": "Kobe Bryant",
+        "C": "Michael Jordan",
+        "D": "Shaquille O'Neal"
+      },
+      "richtige_antwort": "C",
+      "tag": "Sport"
+    },
+    {
+      "frage": "Wie viele Ringe hat die olympische Flagge?",
+      "antworten": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      },
+      "richtige_antwort": "C",
+      "tag": "Sport"
+    },
+    {
+      "frage": "In welchem Land fanden die ersten modernen Olympischen Spiele 1896 statt?",
+      "antworten": {
+        "A": "Frankreich",
+        "B": "Griechenland",
+        "C": "USA",
+        "D": "Deutschland"
+      },
+      "richtige_antwort": "B",
+      "tag": "Sport"
+    },
+    {
       "frage": "Welches ist das größte Organ des menschlichen Körpers?",
       "antworten": {
         "A": "Leber",
@@ -174,6 +405,39 @@
         "D": "92"
       },
       "richtige_antwort": "B",
+      "tag": "Biologie"
+    },
+    {
+      "frage": "Was ist die Hauptfunktion der roten Blutkörperchen?",
+      "antworten": {
+        "A": "Abwehr von Bakterien",
+        "B": "Blutgerinnung",
+        "C": "Sauerstofftransport",
+        "D": "Nährstoffspeicherung"
+      },
+      "richtige_antwort": "C",
+      "tag": "Biologie"
+    },
+    {
+      "frage": "Welches Gas atmen Pflanzen hauptsächlich ein?",
+      "antworten": {
+        "A": "Sauerstoff",
+        "B": "Stickstoff",
+        "C": "Kohlendioxid",
+        "D": "Helium"
+      },
+      "richtige_antwort": "C",
+      "tag": "Biologie"
+    },
+    {
+      "frage": "Wie nennt man die 'Energiezentren' einer Zelle?",
+      "antworten": {
+        "A": "Ribosomen",
+        "B": "Vakuolen",
+        "C": "Mitochondrien",
+        "D": "Zellkerne"
+      },
+      "richtige_antwort": "C",
       "tag": "Biologie"
     },
     {
@@ -199,6 +463,39 @@
       "tag": "Tierwelt"
     },
     {
+      "frage": "Welcher Vogel kann rückwärts fliegen?",
+      "antworten": {
+        "A": "Spatz",
+        "B": "Adler",
+        "C": "Kolibri",
+        "D": "Eule"
+      },
+      "richtige_antwort": "C",
+      "tag": "Tierwelt"
+    },
+    {
+      "frage": "Wie nennt man eine Gruppe von Löwen?",
+      "antworten": {
+        "A": "Schwarm",
+        "B": "Rudel",
+        "C": "Stolz (Pride)",
+        "D": "Herde"
+      },
+      "richtige_antwort": "C",
+      "tag": "Tierwelt"
+    },
+    {
+      "frage": "Welches Säugetier kann fliegen?",
+      "antworten": {
+        "A": "Pinguin",
+        "B": "Strauß",
+        "C": "Fledermaus",
+        "D": "Flughörnchen"
+      },
+      "richtige_antwort": "C",
+      "tag": "Tierwelt"
+    },
+    {
       "frage": "Wer malte die 'Mona Lisa'?",
       "antworten": {
         "A": "Vincent van Gogh",
@@ -216,6 +513,39 @@
         "B": "Salvador Dalí",
         "C": "Vincent van Gogh",
         "D": "Rembrandt"
+      },
+      "richtige_antwort": "C",
+      "tag": "Kunst"
+    },
+    {
+      "frage": "In welcher Epoche wurde der Kölner Dom hauptsächlich gebaut (Stil)?",
+      "antworten": {
+        "A": "Renaissance",
+        "B": "Barock",
+        "C": "Gotik",
+        "D": "Romanik"
+      },
+      "richtige_antwort": "C",
+      "tag": "Kunst"
+    },
+    {
+      "frage": "Welcher Künstler schnitt sich (angeblich) ein Teil seines Ohres ab?",
+      "antworten": {
+        "A": "Pablo Picasso",
+        "B": "Vincent van Gogh",
+        "C": "Andy Warhol",
+        "D": "Edvard Munch"
+      },
+      "richtige_antwort": "B",
+      "tag": "Kunst"
+    },
+    {
+      "frage": "Wie heißt das berühmte Werk von Edvard Munch, das eine schreiende Figur zeigt?",
+      "antworten": {
+        "A": "Das Lächeln",
+        "B": "Die Nacht",
+        "C": "Der Schrei",
+        "D": "Die Angst"
       },
       "richtige_antwort": "C",
       "tag": "Kunst"
