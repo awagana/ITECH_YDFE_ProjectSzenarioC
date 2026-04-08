@@ -1,19 +1,8 @@
-# insert_quiz_data.py
-# ========================================================
-# SCRIPT 2: Daten aus JSON in die Datenbank einfügen
-# ========================================================
-# Dieses Script liest deine quiz_fragen.json und fügt alle Fragen in die Datenbank ein.
+# Mini README für diese Datei:
+#   Dieses Script liest quiz_fragen.json und fügt alle Fragen in die Datenbank ein.
+#   Voraussetzung: Die Datenbank muss vorher mit create_quiz_db.py angelegt worden sein.
 #
-# Besondere Features:
-# - Vor jedem Einfügen wird geprüft, ob die Frage in dieser Kategorie bereits existiert.
-# - Die Prüfung ist CASE-INSENSITIVE → "Was ist die Hauptstadt..." und "was ist die hauptstadt..." werden als gleich erkannt.
-# - Gleiche Frage in unterschiedlichen Kategorien ist erlaubt.
-# - Übersprungene Fragen werden klar angezeigt.
-# - Vollständige Fehlerbehandlung + schöne Abschluss-Statistik.
-#
-# Voraussetzung: Die Datenbank muss vorher mit create_quiz_db.py angelegt worden sein.
-#
-# Autor: Für dich erstellt
+# Autor: Florian Rekos
 # Datum: März 2026
 # ========================================================
 
@@ -44,7 +33,6 @@ def insert_data() -> None:
         cursor = conn.cursor()
 
         for frage in fragen:
-            # === CASE-INSENSITIVE DUPLIKAT-PRÜFUNG ===
             cursor.execute(
                 "SELECT COUNT(*) FROM fragen WHERE LOWER(frage) = LOWER(?) AND LOWER(tag) = LOWER(?)",
                 (frage["frage"], frage["tag"])
@@ -57,7 +45,6 @@ def insert_data() -> None:
                       f"{frage['tag']} → {frage['frage'][:60]}...")
                 continue
 
-            # === Neue Frage einfügen ===
             cursor.execute('''
                 INSERT INTO fragen
                 (frage, antwort_a, antwort_b, antwort_c, antwort_d, richtige_antwort, tag)
@@ -73,7 +60,6 @@ def insert_data() -> None:
             ))
             neu_eingefuegt += 1
 
-    # === Abschluss-Statistik ===
     print("\n" + "=" * 60)
     print("✅ IMPORT ERFOLGREICH ABGESCHLOSSEN!")
     print(f"   Neu eingefügt : {neu_eingefuegt} Fragen")

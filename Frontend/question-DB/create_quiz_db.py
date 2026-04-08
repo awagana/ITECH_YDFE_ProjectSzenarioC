@@ -1,7 +1,6 @@
 import sqlite3
 import os
 
-# ABSOLUTER PFAD: Genau wie in app.py
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_DIR = os.path.join(BASE_DIR, "question-DB")
 DB_DATEI = os.path.join(DB_DIR, "quiz.db")
@@ -13,7 +12,6 @@ def setup():
         print(f"📁 Ordner erstellt: {DB_DIR}")
 
     with sqlite3.connect(DB_DATEI) as conn:
-        # Tabellen erstellen (Code bleibt gleich)
         conn.execute('''
             CREATE TABLE IF NOT EXISTS fragen (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
